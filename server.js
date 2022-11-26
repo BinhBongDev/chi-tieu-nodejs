@@ -11,16 +11,10 @@ app.set('view engine', 'ejs');
 app.set('views', 'src/pages');
 
 app.get('/', (req, res) => {
-  res.render('includes/header', {
-    pageTitle: 'Headersa'
+  res.render('layouts/home', {
+    pageTitle: 'Home'
   })
 })
-
-app.get('/home', (req, res) => {
-    res.render('layouts/home', {
-      pageTitle: 'Home'
-    })
-  })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
