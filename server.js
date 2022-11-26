@@ -1,10 +1,19 @@
+const path = require('path')
 const express = require('express')
 const app = express()
 const port = 8080
 
-// respond with "hello world" when a GET request is made to the homepage
+
+// config static file
+app.use(express.static(path.join(__dirname, 'src/public')));
+
+app.set('view engine', 'ejs');
+app.set('views', 'src/pages');
+
 app.get('/', (req, res) => {
-  res.send('hello world')
+  res.render('includes/header', {
+    pageTitle: 'Headers'
+  })
 })
 
 app.listen(port, () => {
