@@ -12,9 +12,15 @@ app.set('views', 'src/pages');
 
 app.get('/', (req, res) => {
   res.render('includes/header', {
-    pageTitle: 'Headers'
+    pageTitle: 'Headersa'
   })
 })
+
+app.get('/home', (req, res) => {
+    res.render('layouts/home', {
+      pageTitle: 'Home'
+    })
+  })
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
