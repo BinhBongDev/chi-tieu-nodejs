@@ -10,20 +10,17 @@
     <title><%= pageTitle %></title>
 </head>
 <body>
-  <!-- <div class="backdrop"></div> -->
+  <div class="backdrop"></div>
       <nav class="header bg-success text-white">
           <div class="leftSide">
             <div class="itemLeft">
-              <li><a href="/">Trang chủ</a></li>
-              <li><a href="/">Tổng thu</a></li>
-              <li><a href="/">Tổng chi</a></li>
+              <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+              <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
+              <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
             </div>
             <div class="font-menu">
               <span id="menuIcon">
                 <i class="fa-solid fa-bars"></i>
-              </span>
-              <span id="exitIcon">
-                <i class="fa-solid fa-xmark"></i>
               </span>
             </div>
           </div>
@@ -37,9 +34,17 @@
       </nav>
       <!-- mobile -->
       <div class="mobile-nav bg-success text-white">
-        <li><a href="/">Trang chủ</a></li>
-        <li><a href="/">Tổng thu</a></li>
-        <li><a href="/">Tổng chi</a></li>
+        <div>
+          <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+          <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
+          <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
+
+        </div>
+        <div>
+          <span id="exitIcon">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
       </div>
 </body>
 </html>

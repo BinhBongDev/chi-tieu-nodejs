@@ -24,9 +24,11 @@
 .itemLeft li a {
     text-decoration: none;
     color: #fff;
-} 
+}
 
-.itemLeft li a:hover, .itemLeft li a:active {
+.itemLeft li a:hover,
+.itemLeft li a:active,
+.itemLeft li a.active {
     color: yellow;
     
 }
@@ -62,10 +64,28 @@
 
 /* mobile */
 .mobile-nav {
-    padding-left:2rem;
-    margin-top: -1.5rem;
-    display: none;
+    width: 20rem;
+    height: 100vh;
+    max-width: 90%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 2rem;
+    z-index: 10;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-out;
+    display: flex;
+    justify-content: space-between;
 }
+
+.mobile-nav.open {
+    transform: translateX(0);
+  }
+
+  .mobile-nav span {
+    font-size: 2rem;
+    cursor: pointer;
+  }
 
 .mobile-nav li {
     padding-bottom: 1rem;
@@ -74,15 +94,13 @@
 .mobile-nav li a {
 text-decoration: none;
 color: #fff;
-font-size: 1rem;
+font-size: 2rem;
 }
 
-.mobile-nav li a:hover, .mobile-nav li a:active {
+.mobile-nav li a:hover,
+.mobile-nav li a:active,
+.mobile-nav li a.active {
     color: yellow;
-}
-
-#exitIcon {
-    display: none;
 }
 
 /* respon */
@@ -90,6 +108,10 @@ font-size: 1rem;
 @media (min-width: 992px) {
 
     .font-menu {
+        display: none;
+    }
+
+    .mobile-nav {
         display: none;
     }
 

@@ -12,7 +12,22 @@ app.set('views', 'src/pages');
 
 app.get('/', (req, res) => {
   res.render('layouts/home', {
-    pageTitle: 'Home'
+    pageTitle: 'Home',
+    path: '/'
+  })
+})
+
+app.get('/thu', (req, res) => {
+  res.render('layouts/thu', {
+    pageTitle: 'Thu',
+    path: '/thu'
+  })
+})
+
+app.get('/chi', (req, res) => {
+  res.render('layouts/chi', {
+    pageTitle: 'Chi',
+    path: '/chi'
   })
 })
 
