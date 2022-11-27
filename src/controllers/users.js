@@ -1,7 +1,10 @@
 const UserModel = require('../models/User')
 
 exports.getLogin = (req, res) => {
-    res.send('LOGIN')
+   res.render('users/login', {
+      pageTitle:'Đăng nhập',
+      path:'/login'
+   })
 }
 
 exports.postLogin = (req, res) => {
@@ -13,16 +16,14 @@ exports.postRegister = (req, res) => {
    const user = {
     username,
     password,
-    post: [
-        {title: 'Ăn sáng', money: '30k', dateUser:"27-11-22"}
-    ]
+    post: []
    }
 
    const newUser = new UserModel(user)
    newUser.save()
    .then(data => {
-    console.log(data)
     res.send(data)
+    res.redirect('/dang-nhap')
    })
    .catch(err => {
     console.log('CHua luu dc db: ', err)
@@ -30,5 +31,8 @@ exports.postRegister = (req, res) => {
 }
 
 exports.getRegister = (req, res) => {
-    res.send('Get register')
+   res.render('users/signUp', {
+    path:'/dang-ky',
+    pageTitle: 'Đăng ký'
+   })
  }

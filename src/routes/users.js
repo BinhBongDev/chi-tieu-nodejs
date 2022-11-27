@@ -4,11 +4,11 @@ const router = express.Router();
 
 const usersControllers = require('../controllers/users')
 
-router.get('/login', usersControllers.getLogin)
+router.get('/dang-nhap', usersControllers.getLogin)
 
 router.post('/login', usersControllers.postLogin)
 
-router.get('/register', usersControllers.getRegister)
+router.get('/dang-ky', usersControllers.getRegister)
 
 router.post('/register', usersControllers.postRegister)
 

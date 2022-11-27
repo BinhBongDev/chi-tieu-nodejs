@@ -11,6 +11,7 @@ const routeLayouts = require('./src/routes/layout')
 const routesUser = require('./src/routes/users')
 
 app.use(express.json({ extended: false }));
+app.use(express.urlencoded({extended: true}))
 
 // config static file
 app.use(express.static(path.join(__dirname, 'src/public')));
