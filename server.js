@@ -3,6 +3,7 @@ const express = require('express')
 const app = express()
 const port = 8080
 
+const routeLayouts = require('./src/routes/layout')
 
 // config static file
 app.use(express.static(path.join(__dirname, 'src/public')));
@@ -10,26 +11,8 @@ app.use(express.static(path.join(__dirname, 'src/public')));
 app.set('view engine', 'ejs');
 app.set('views', 'src/pages');
 
-app.get('/', (req, res) => {
-  res.render('layouts/home', {
-    pageTitle: 'Home',
-    path: '/'
-  })
-})
-
-app.get('/thu', (req, res) => {
-  res.render('layouts/thu', {
-    pageTitle: 'Thu',
-    path: '/thu'
-  })
-})
-
-app.get('/chi', (req, res) => {
-  res.render('layouts/chi', {
-    pageTitle: 'Chi',
-    path: '/chi'
-  })
-})
+// routes
+app.use(routeLayouts)
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
