@@ -1,0 +1,36 @@
+<div class="backdrop"></div>
+      <nav class="header bg-success text-white">
+          <div class="leftSide">
+            <div class="itemLeft">
+              <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+              <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
+              <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
+            </div>
+            <div class="font-menu">
+              <span id="menuIcon">
+                <i class="fa-solid fa-bars"></i>
+              </span>
+            </div>
+          </div>
+
+          <div class="rightSide">
+            <div class="img-av">
+              <img src="/img/user.png" alt="username" />
+            </div>
+            <span>UserName</span>
+          </div>
+      </nav>
+      <!-- mobile -->
+      <div class="mobile-nav bg-success text-white">
+        <div>
+          <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+          <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
+          <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
+
+        </div>
+        <div>
+          <span id="exitIcon">
+            <i class="fa-solid fa-xmark"></i>
+          </span>
+        </div>
+      </div>
