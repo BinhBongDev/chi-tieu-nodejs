@@ -110,6 +110,22 @@ font-size: 2rem;
 
 /* respon */
 
+.img-av-mobile {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+}
+.img-av-mobile img {
+    width: 100%;
+    object-fit: cover;
+}
+
+.img-av-mobile span {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+}
+
 @media (min-width: 992px) {
 
     .font-menu {

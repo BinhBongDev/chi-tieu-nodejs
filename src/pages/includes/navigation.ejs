@@ -3,8 +3,10 @@
           <div class="leftSide">
             <div class="itemLeft">
               <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+              <% if(isLoggedin) { %>
               <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
               <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
+              <% } %>
             </div>
             <div class="font-menu">
               <span id="menuIcon">
@@ -14,19 +16,34 @@
           </div>
 
           <div class="rightSide">
+            <% if(!isLoggedin) { %>
+            <div class="itemLeft">
+              <li><a class="<%= path === '/dang-nhap' ? 'active' : '' %>" href="/dang-nhap">Đăng nhập</a></li>
+              <li><a class="<%= path === '/dang-ky' ? 'active' : '' %>" href="/dang-ky">Đăng ký</a></li>
+            </div>
+            <% } else { %>
             <div class="img-av">
               <img src="/img/user.png" alt="username" />
             </div>
             <span>UserName</span>
+            <% } %>
           </div>
       </nav>
       <!-- mobile -->
       <div class="mobile-nav bg-success text-white">
         <div>
           <li><a class="<%= path === '/' ? 'active' : '' %>" href="/">Trang chủ</a></li>
+          <% if(isLoggedin) { %>
           <li><a class="<%= path === '/thu' ? 'active' : '' %>" href="/thu">Tổng thu</a></li>
           <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
-
+          <div class="img-av-mobile">
+            <img src="/img/user.png" alt="username" />
+            <span>username</span>
+          </div>
+          <% } else { %>
+          <li><a class="<%= path === '/dang-nhap' ? 'active' : '' %>" href="/dang-nhap">Đăng nhập</a></li>
+          <li><a class="<%= path === '/dang-ky' ? 'active' : '' %>" href="/dang-ky">Đăng ký</a></li>
+          <% } %>
         </div>
         <div>
           <span id="exitIcon">
