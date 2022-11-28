@@ -1,20 +1,24 @@
 exports.getHome = (req, res) => {
+  console.log(req.isLoggedin)
     res.render('layouts/home', {
         pageTitle: 'Home',
-        path: '/'
+        path: '/',
+        isLoggedin:req.isLoggedin
       })
 }
 
 exports.getThu = (req, res) => {
     res.render('layouts/thu', {
         pageTitle: 'Thu',
-        path: '/thu'
+        path: '/thu',
+        isLoggedin:req.isLoggedin
       })
 }
 
 exports.getChi = (req, res) => {
     res.render('layouts/chi', {
         pageTitle: 'Chi',
-        path: '/chi'
+        path: '/chi',
+        isLoggedin:req.isLoggedin
       })
 }

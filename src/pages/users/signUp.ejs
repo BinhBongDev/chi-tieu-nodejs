@@ -6,7 +6,10 @@
   <%- include('../includes/navigation.ejs') %>
     <div class="container-fluid mt-3">
       <h2 class="text-center">Đăng ký</h2>
-        <form method="post" action="/register" novalidate>
+      <% if(errMess) { %>
+        <div class="p-3 mb-2 bg-danger text-white text-center"><%= errMess %></div>
+      <% } %>
+        <form method="post" action="/dang-ky">
             <div class="mb-3">
               <label for="username" class="form-label">User Name</label>
               <input type="text" class="form-control" id="username" name="username">

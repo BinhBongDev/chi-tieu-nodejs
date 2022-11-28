@@ -4,13 +4,15 @@ const router = express.Router();
 
 const usersControllers = require('../controllers/users')
 
-router.get('/dang-nhap', usersControllers.getLogin)
+const takeCookie = require('../middleware/condition')
+
+router.get('/dang-nhap', takeCookie,usersControllers.getLogin)
 
 router.post('/login', usersControllers.postLogin)
 
 router.get('/dang-ky', usersControllers.getRegister)
 
-router.post('/register', usersControllers.postRegister)
+router.post('/dang-ky', usersControllers.postRegister)
 
 
 module.exports = router;

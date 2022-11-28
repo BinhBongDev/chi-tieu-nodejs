@@ -20,8 +20,10 @@ app.set('view engine', 'ejs');
 app.set('views', 'src/pages');
 
 // routes
-app.use(routeLayouts)
 app.use(routesUser)
+app.use(routeLayouts)
+
+
 
 
 mongoose.connect(URL, {
