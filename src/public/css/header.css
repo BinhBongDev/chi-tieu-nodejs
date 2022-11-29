@@ -43,8 +43,14 @@ a {
     text-align: center;
 }
 
-.rightSide span {
-    font-size: 1rem;
+.rightSide form button {
+    outline: none;
+    border: none;
+    background-color: unset;
+}
+
+.rightSide form button:hover {
+    color: yellow;
 }
 
 .rightSide {
@@ -111,20 +117,30 @@ font-size: 2rem;
 /* respon */
 
 .img-av-mobile {
-    width: 40px;
-    height: 40px;
     display: flex;
     align-items: center;
 }
 .img-av-mobile img {
+    max-width: 40px;
+    height: 40px;
     width: 100%;
     object-fit: cover;
 }
 
-.img-av-mobile span {
+.img-av-mobile form {
     font-size: 1.5rem;
     margin-left: 1rem;
 }
+.img-av-mobile form button {
+    outline: none;
+    border: none;
+}
+
+.img-av-mobile form button:hover {
+   color: #fff;
+   background-color: #000;
+}
+
 
 @media (min-width: 992px) {
 

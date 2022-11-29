@@ -6,16 +6,20 @@
   <%- include('../includes/navigation.ejs') %>
     <div class="container-fluid mt-3">
       <h2 class="text-center">Đăng Nhập</h2>
-        <form method="post" action="/login">
+      <% if(errMess) { %>
+        <div class="p-3 mb-2 bg-danger text-white text-center"><%= errMess %></div>
+      <% } %>
+        <form method="post" action="/dang-nhap">
             <div class="mb-3">
               <label for="username" class="form-label">User Name</label>
-              <input type="text" class="form-control" id="username" name="username">
+              <input type="text" class="form-control" id="username" name="username" value="">
             </div>
             <div class="mb-3">
               <label for="password" class="form-label">Mật khẩu</label>
-              <input type="password" class="form-control" id="password" name="password">
+              <input type="password" class="form-control" id="password" name="password" value="">
             </div>
             <button type="submit" class="btn btn-primary text-center">Đăng nhập</button>
+            <span>Bạn chưa có tài khoản ? <a href="/dang-ky" class="text-danger">Đăng ký</a></span>
           </form>
     </div>
 <%- include("../includes/footer.ejs") %>

@@ -25,7 +25,9 @@
             <div class="img-av">
               <img src="/img/user.png" alt="username" />
             </div>
-            <span>UserName</span>
+            <form action="/logout" method="post">
+              <button type="submit">Đăng xuất</button>
+            </form>
             <% } %>
           </div>
       </nav>
@@ -38,7 +40,9 @@
           <li><a class="<%= path === '/chi' ? 'active' : '' %>" href="/chi">Tổng chi</a></li>
           <div class="img-av-mobile">
             <img src="/img/user.png" alt="username" />
-            <span>username</span>
+            <form action="/logout" method="post">
+              <button type="submit">Đăng xuất</button>
+            </form>
           </div>
           <% } else { %>
           <li><a class="<%= path === '/dang-nhap' ? 'active' : '' %>" href="/dang-nhap">Đăng nhập</a></li>

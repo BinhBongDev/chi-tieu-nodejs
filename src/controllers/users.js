@@ -1,15 +1,41 @@
 const UserModel = require('../models/User')
 
+const {takeUserId} = require('../middleware/dataUser')
+
 exports.getLogin = (req, res) => {
    res.render('users/login', {
       pageTitle:'Đăng nhập',
       path:'/login',
-      isLoggedin:req.isLoggedin
+      errMess:''
    })
 }
 
 exports.postLogin = (req, res) => {
-   res.send('Post')
+   const {username, password} = req.body
+   UserModel.findOne({username})
+   .then(data => {
+      if(!data) {
+         return res.render('users/login', {
+            pageTitle:'Đăng nhập',
+            path:'/login',
+            errMess:'User not Found'
+         })
+      }
+
+      if(password !==  data.password) {
+         return res.render('users/login', {
+            pageTitle:'Đăng nhập',
+            path:'/login',
+            errMess:'Pass not match'
+         })
+      }
+      req.session.isLoggedIn = true;
+      req.session.user = data;
+      return req.session.save(err => {
+         res.redirect('/')
+      })
+   })
+   .catch(err => console.log('Loi dang nhap: ', err))
 }
 
 exports.postRegister = (req, res) => {
@@ -21,7 +47,6 @@ exports.postRegister = (req, res) => {
             path:'/dang-ky',
             pageTitle: 'Đăng ký',
             errMess: 'user exit plz chosse another',
-            isLoggedin:req.isLoggedin
            })
       }
       const user = {
@@ -32,10 +57,11 @@ exports.postRegister = (req, res) => {
         const newUser = new UserModel(user)
         newUser.save()
         .then(data => {
-         res.setHeader('Set-Cookie', 'isLoggedin=true');
-        })
-        .then(() => {
-           res.redirect('/')
+         req.session.isLoggedIn = true;
+         req.session.user = data;
+         return req.session.save(err => {
+            res.redirect('/')
+         })
         })
    })
    .catch(err => {
@@ -48,6 +74,11 @@ exports.getRegister = (req, res) => {
     path:'/dang-ky',
     pageTitle: 'Đăng ký',
     errMess:'',
-    isLoggedin:req.isLoggedin
    })
  }
+
+exports.logoutUser = (req, res) => {
+   req.session.destroy((err) => {
+      res.redirect('/dang-nhap');
+  });
+}

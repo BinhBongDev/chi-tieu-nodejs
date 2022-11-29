@@ -2,10 +2,16 @@ require('dotenv').config()
 const path = require('path')
 const express = require('express')
 const mongoose = require('mongoose')
+const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const app = express()
 const port = process.env.PORT
 const URL = process.env.URL
 
+const store = new MongoDBStore({
+  uri: URL,
+  collection: 'sessions',
+});
 
 const routeLayouts = require('./src/routes/layout')
 const routesUser = require('./src/routes/users')
@@ -19,11 +25,25 @@ app.use(express.static(path.join(__dirname, 'src/public')));
 app.set('view engine', 'ejs');
 app.set('views', 'src/pages');
 
+// sections
+
+app.use(
+  session({
+      secret: 'my secret',
+      resave: false,
+      saveUninitialized: false,
+      store: store,
+  })
+);
+
+app.use((req, res, next) => {
+  res.locals.isLoggedin= req.session.isLoggedIn
+  next();
+});
+
 // routes
 app.use(routesUser)
 app.use(routeLayouts)
-
-
 
 
 mongoose.connect(URL, {

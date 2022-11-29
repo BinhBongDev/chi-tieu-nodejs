@@ -4,13 +4,14 @@ const router = express.Router();
 
 const layoutControllers = require('../controllers/layout')
 
-const takeCookie = require('../middleware/condition')
+const condition = require('../middleware/condition')
 
-router.get('/',takeCookie, layoutControllers.getHome)
 
-router.get('/thu', takeCookie, layoutControllers.getThu)
+router.get('/', condition,layoutControllers.getHome)
 
-router.get('/chi', takeCookie,layoutControllers.getChi)
+router.get('/thu', condition, layoutControllers.getThu)
+
+router.get('/chi', condition,layoutControllers.getChi)
 
 
 module.exports = router;
