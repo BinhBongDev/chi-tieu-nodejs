@@ -44,6 +44,7 @@ a {
 }
 
 .rightSide form button {
+    color: #fff;
     outline: none;
     border: none;
     background-color: unset;
@@ -175,7 +176,5 @@ font-size: 2rem;
 
 
 .footerFix {
-    position: fixed;
-    bottom: 0;
     width: 100%;
 }

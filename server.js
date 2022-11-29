@@ -4,6 +4,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const session = require('express-session');
 const MongoDBStore = require('connect-mongodb-session')(session);
+const UserModel = require('./src/models/User')
 const app = express()
 const port = process.env.PORT
 const URL = process.env.URL
@@ -39,6 +40,24 @@ app.use(
 app.use((req, res, next) => {
   res.locals.isLoggedin= req.session.isLoggedIn
   next();
+});
+
+app.use((req, res, next) => {
+  if (!req.session.user) {
+      return next();
+  }
+  UserModel.findById(req.session.user._id)
+      .then((user) => {
+          if (!user) {
+              return next();
+          }
+          req.user = user;
+          res.locals.name = user.username
+          next();
+      })
+      .catch((err) => {
+          next(new Error(err));
+      });
 });
 
 // routes

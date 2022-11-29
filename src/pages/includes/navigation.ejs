@@ -26,7 +26,7 @@
               <img src="/img/user.png" alt="username" />
             </div>
             <form action="/logout" method="post">
-              <button type="submit">Đăng xuất</button>
+              <button type="submit"><%= name %></button>
             </form>
             <% } %>
           </div>
@@ -41,7 +41,7 @@
           <div class="img-av-mobile">
             <img src="/img/user.png" alt="username" />
             <form action="/logout" method="post">
-              <button type="submit">Đăng xuất</button>
+              <button type="submit"><%= name %></button>
             </form>
           </div>
           <% } else { %>
